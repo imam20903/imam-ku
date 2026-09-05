@@ -18,7 +18,9 @@ jobs:
 
     steps:
       - name: Setup Debug Information
-        run: echo "::debug::Triggered by ref = ${{github.ref}}"
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        run: echo "::debug::Triggered by ref = $GITHUB_REF"
 
       - name: Checkout Code
         uses: actions/checkout@v3 # Latest version for optimized performance
